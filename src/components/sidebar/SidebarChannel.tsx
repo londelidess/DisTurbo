@@ -1,6 +1,6 @@
 import React from "react";
 import "./SidebarChannel.scss";
-import { doc, onSnapshot, collection, query, DocumentData } from "firebase/firestore";
+import { DocumentData } from "firebase/firestore";
 
 type Props = {
   id:string;
