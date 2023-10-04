@@ -11,14 +11,14 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallBack } from "./utils/ErrorFallBack";
 
 function App() {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
   // const user = null
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     auth.onAuthStateChanged((loginUser) => {
-      console.log(loginUser);
+      // console.log(loginUser);
       if (loginUser) {
         dispatch(
           login({

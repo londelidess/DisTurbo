@@ -6,15 +6,27 @@ import SidebarChannel from "./SidebarChannel";
 import MicIcon from '@mui/icons-material/Mic';
 import HeadphonesIcon from '@mui/icons-material/Headphones';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { auth } from '../../firebase'
+import { auth, db } from '../../firebase'
 import {  useAppSelector } from "../../app/hooks";
 // import { collection, query } from "firebase/firestore/lite"
 // import { doc, onSnapshot, collection, query, DocumentData } from "firebase/firestore";
 import useCollection from "../../hooks/useCollection"
+import { collection, addDoc } from "firebase/firestore";
 
 const Sidebar = () => {
-  const user = useAppSelector((state)=>state.user)
+  const user = useAppSelector((state)=>state.user.user)
   const { documents: channels} = useCollection("channels")
+
+  const addChannel= async () => {
+    let channelName: string | null = prompt("Make a New Channel");
+
+    if(channelName){
+      await addDoc(collection(db, "channels"), {
+        channelName: channelName,
+      });
+    }
+  }
+
   return (
     <div className="sidebar">
       {/* sidebarleft */}
@@ -40,7 +52,7 @@ const Sidebar = () => {
               <ExpandMoreIcon />
               <h4>Programming Channel</h4>
             </div>
-            <AddIcon className="sidebarAddIcon" />
+            <AddIcon className="sidebarAddIcon" onClick={()=>addChannel()}/>
           </div>
           <div className="sidebarChannelList">
           {channels.map((channel)=>(

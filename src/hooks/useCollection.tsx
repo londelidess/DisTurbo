@@ -1,31 +1,37 @@
-import React , { useEffect, useState } from "react";
-import {  onSnapshot, collection, query, DocumentData, Query, QueryDocumentSnapshot } from "firebase/firestore";
-import { db } from '../firebase'
+import React, { useEffect, useState } from "react";
+import {
+  onSnapshot,
+  collection,
+  query,
+  DocumentData,
+  Query,
+  QueryDocumentSnapshot,
+} from "firebase/firestore";
+import { db } from "../firebase";
 
-interface Channels{
-  id:string;
-  channel:DocumentData;
+interface Channels {
+  id: string;
+  channel: DocumentData;
 }
 
-const useCollection = (data:string) => {
-    const [documents, setDocuments] = useState<Channels[]>([]);
-    const collectionRef: Query<DocumentData> = query(collection(db, data))
+const useCollection = (data: string) => {
+  const [documents, setDocuments] = useState<Channels[]>([]);
+  const collectionRef: Query<DocumentData> = query(collection(db, data));
 
-    useEffect(()=>{
-
-    onSnapshot(collectionRef,(querySnapshot)=>{
-      const channelsResults:Channels[] = [];
+  useEffect(() => {
+    onSnapshot(collectionRef, (querySnapshot) => {
+      const channelsResults: Channels[] = [];
       querySnapshot.docs.forEach((doc: QueryDocumentSnapshot<DocumentData>) =>
-      channelsResults.push({
-        id: doc.id,
-        channel:doc.data(),
-      })
-    );
-    setDocuments(channelsResults)
+        channelsResults.push({
+          id: doc.id,
+          channel: doc.data(),
+        })
+      );
+      setDocuments(channelsResults);
     });
-  },[])
+  }, []);
 
-  return {documents};
-}
+  return { documents };
+};
 
-export default useCollection
+export default useCollection;
