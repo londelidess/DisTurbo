@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { InitialUserState } from "../Types"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { InitialState } from "../Types";
 
-const initialState: InitialUserState={
-    user: null,
+const initialState: InitialState = {
+  user: null,
+  displayName: "",
+  photo: undefined,
 };
 
 export const userSlice = createSlice({
@@ -18,5 +20,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { login, logout }= userSlice.actions;
+export const { login, logout } = userSlice.actions;
 export default userSlice.reducer;

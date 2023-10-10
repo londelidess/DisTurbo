@@ -1,4 +1,6 @@
-export interface InitialUserState {
+export interface InitialState {
+  displayName: string;
+  photo: string | undefined;
   user: null | {
     uid: string;
     photo: string;
@@ -7,7 +9,7 @@ export interface InitialUserState {
   };
 }
 
-export interface InitialChannelState {
+export interface InitialAppState {
   channelId: string | null;
   channelName: string | null;
 }
