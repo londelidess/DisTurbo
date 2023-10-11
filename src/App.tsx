@@ -11,9 +11,8 @@ import { ErrorBoundary } from "react-error-boundary";
 import { ErrorFallBack } from "./utils/ErrorFallBack";
 
 function App() {
-  const user = useAppSelector((state) => state.user.user);
+  const user = useAppSelector((state) => state.user);
   // const user = null
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ function App() {
             //payload
             uid: loginUser.uid,
             photo: loginUser.photoURL,
-            emil: loginUser.email,
+            email: loginUser.email,
             displayName: loginUser.displayName,
           })
         );
@@ -44,7 +43,6 @@ function App() {
           <ErrorBoundary FallbackComponent={ErrorFallBack}>
             <Sidebar />
           </ErrorBoundary>
-
           {/* chat */}
           <Chat />
         </>

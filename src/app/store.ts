@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import userReducer from '../features/userSlice';
-import appReducer  from "../features/channelSlice";
+import channelReducer  from "../features/channelSlice";
 
 export const store = configureStore({
     reducer:{
         user:userReducer,
-        app:appReducer ,
+        channel:channelReducer ,
     }
 })
 
 export type AppDispatch = typeof store.dispatch;
 
 export type RootState = ReturnType<typeof store.getState>;
-export const useSelector: TypedUseSelectorHook<RootState> = rawUseSelector;
+// export const useSelector: TypedUseSelectorHook<RootState> = rawUseSelector;
