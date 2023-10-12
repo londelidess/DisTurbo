@@ -1,4 +1,4 @@
-# Disturbo
+# Real-Time Chat Application "Disturbo"
 
 ## Overview
 
