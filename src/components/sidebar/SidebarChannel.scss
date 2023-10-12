@@ -10,7 +10,7 @@
     font-size: 1.1rem;
     cursor: pointer;
 
-    &:hover {
+    &.active, &:hover {
       color: white;
       background-color: #33363d;
       border-radius: 7px;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Sidebar.scss";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import AddIcon from "@mui/icons-material/Add";
@@ -14,6 +14,7 @@ import useCollection from "../../hooks/useCollection";
 import { collection, addDoc } from "firebase/firestore";
 
 const Sidebar = () => {
+
   const user = useAppSelector((state) => state.user.user);
   const { documents: channels } = useCollection("channels");
 
