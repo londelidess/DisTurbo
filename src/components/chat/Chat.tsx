@@ -83,6 +83,7 @@ const Chat = () => {
         <form>
           <input
             type="text"
+            title="Type Your Messages"
             placeholder={`Send messages to #${channelName}`}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInputText(e.target.value)

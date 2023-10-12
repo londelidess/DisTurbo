@@ -52,9 +52,14 @@ const Sidebar = () => {
               <ExpandMoreIcon />
               <h4>Discussion About...</h4>
             </div>
-            <AddIcon className="sidebarAddIcon" onClick={() => addChannel()} />
+            <AddIcon
+              className="sidebarAddIcon"
+              titleAccess="Add Channel"
+              style={{ cursor: "pointer" }}
+              onClick={() => addChannel()}
+            />
           </div>
-          <div className="sidebarChannelList">
+          <div className="sidebarChannelList" title="Switch Channels" >
             {channels.map((channel) => (
               <SidebarChannel
                 channel={channel}
