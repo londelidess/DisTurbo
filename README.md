@@ -1,12 +1,14 @@
 # Real-Time Chat Application "Disturbo"
-
 ## Overview
 
 Disturbo is a Discord clone application designed to emulate the core features of the popular chat platform, Discord. This application allows users to engage in real-time chat conversations, manage channels, and authenticate their identities.
 
+![homepage](https://github.com/londelidess/Disturbo/blob/main/public/Disturbo.png)
+
+
 ## Live Deployment
 
-You can access the live deployment of Disturbo at Firebase;[https://disturbo-9ef64.firebaseapp.com/](https://disturbo-9ef64.firebaseapp.com/?_gl=1*4gf19d*_ga*MTkxMDc0MzkxMy4xNjkzOTM2Nzg3*_ga_CW55HF8NVT*MTY5NzA2MzI4NC4xOC4xLjE2OTcwNjQ1MTQuMzEuMC4w)
+You can access the live deployment of Disturbo at [Firebase](https://disturbo-9ef64.firebaseapp.com/?_gl=1*4gf19d*_ga*MTkxMDc0MzkxMy4xNjkzOTM2Nzg3*_ga_CW55HF8NVT*MTY5NzA2MzI4NC4xOC4xLjE2OTcwNjQ1MTQuMzEuMC4w)
 
 ## Features
 
