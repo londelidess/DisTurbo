@@ -13,7 +13,7 @@ You can access the live deployment of Disturbo at [Firebase](https://disturbo-9e
 ## Features
 
 - **Real-Time Chat:** Engage in real-time chat conversations with other users.
-- **Channel Management:** Create, join, and manage chat channels.
+- **Channel Management:** Create chat channels.
 - **User Authentication:** Secure login and logout functionalities using Google authentication.
 - **Responsive UI:** A user-friendly interface that mirrors the design of Discord.
 - **Error Handling:** Enhanced error feedback using `react-error-boundary`.
