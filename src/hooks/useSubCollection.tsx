@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import {
-  addDoc,
   collection,
-  CollectionReference,
   DocumentData,
-  DocumentReference,
-  FieldValue,
-  Firestore,
   onSnapshot,
   orderBy,
   query,
   QueryDocumentSnapshot,
-  QuerySnapshot,
-  serverTimestamp,
+
   Timestamp,
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { useAppSelector } from "../app/hooks";
 
 interface Messages {
+  id: string;
   timestamp: Timestamp;
   message: string;
   user: {
@@ -46,13 +41,14 @@ const useSubCollection = (
 
     const collectionRefOrderBy = query(
       collectionRef,
-      orderBy("timestamp", "desc")
+      orderBy("timestamp", "asc")
     );
 
     onSnapshot(collectionRefOrderBy, (snapshot) => {
       let results: Messages[] = [];
       snapshot.docs.forEach((doc: QueryDocumentSnapshot<DocumentData>) => {
         results.push({
+          id: doc.id,
           timestamp: doc.data().timestamp,
           message: doc.data().message,
           user: doc.data().user,

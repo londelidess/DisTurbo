@@ -1,9 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./Chat.scss";
 import ChatHeader from "./ChatHeader";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+// import {
+//   AddCircleOutline,
+//   CardGiftcardOutlined,
+//   EmojiEmotionsOutlined,
+// } from "@mui/icons-material";
 import GifIcon from "@mui/icons-material/Gif";
 import ChatMessage from "./ChatMessage";
 import { useAppSelector } from "../../app/hooks";
@@ -14,37 +19,18 @@ import {
   CollectionReference,
   DocumentData,
   DocumentReference,
-  FieldValue,
-  Firestore,
-  onSnapshot,
-  orderBy,
-  query,
-  QueryDocumentSnapshot,
-  QuerySnapshot,
   serverTimestamp,
-  Timestamp,
 } from "firebase/firestore";
 // import useFirebase from "../hooks/useFirebase";
 import useSubCollection from "../../hooks/useSubCollection";
 // import { async } from "@firebase/util";
 
-interface Messages {
-  timestamp: Timestamp;
-  message: string;
-  user: {
-    uid: string;
-    photo: string;
-    email: string;
-    displayName: string;
-  };
-}
-
 const Chat = () => {
-  const user = useAppSelector((state) => state.user.user);
-  const channelId = useAppSelector((state) => state.channel.channelId);
-  const channelName = useAppSelector((state) => state.channel.channelName);
-
   const [inputText, setInputText] = useState<string>("");
+  const channelName = useAppSelector((state) => state.channel.channelName);
+  const channelId = useAppSelector((state) => state.channel.channelId);
+  const user = useAppSelector((state) => state.user.user);
+
   const { subDocuments: messages } = useSubCollection("channels", "messages");
 
   const sendMessage = async (
@@ -80,6 +66,8 @@ const Chat = () => {
         {messages.map((message, index) => (
           <ChatMessage
             key={index}
+            messageId={message.id}
+            channelId={String(channelId)}
             message={message.message}
             timestamp={message.timestamp}
             user={message.user}
@@ -91,11 +79,11 @@ const Chat = () => {
       </div>
       {/* chat input */}
       <div className="chatInput">
-        <AddCircleOutlineIcon />
+        <AddCircleOutlineIcon fontSize="large" />
         <form>
           <input
             type="text"
-            placeholder="Send messages to #Makoto"
+            placeholder={`Send messages to #${channelName}`}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setInputText(e.target.value)
             }

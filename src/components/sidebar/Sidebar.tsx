@@ -14,7 +14,7 @@ import useCollection from "../../hooks/useCollection";
 import { collection, addDoc } from "firebase/firestore";
 
 const Sidebar = () => {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
   const { documents: channels } = useCollection("channels");
 
   const addChannel = async () => {
@@ -26,7 +26,7 @@ const Sidebar = () => {
       });
     }
   };
-
+  // console.log(user);
   return (
     <div className="sidebar">
       {/* sidebarleft */}
@@ -50,7 +50,7 @@ const Sidebar = () => {
           <div className="sidebarChannelsHeader">
             <div className="sidebarHeader">
               <ExpandMoreIcon />
-              <h4>Programming Channel</h4>
+              <h4>Discussion About...</h4>
             </div>
             <AddIcon className="sidebarAddIcon" onClick={() => addChannel()} />
           </div>
@@ -69,7 +69,13 @@ const Sidebar = () => {
 
           <div className="sidebarFooter">
             <div className="sidebarAccount">
-              <img src={user?.photo} alt="img" onClick={() => auth.signOut()} />
+              <img
+                src={user?.photo}
+                alt="img"
+                style={{ cursor: "pointer" }}
+                title="Log out"
+                onClick={() => auth.signOut()}
+              />
               <div className="accountName">
                 <h4>{user?.displayName}</h4>
                 <span>#{user?.uid.substring(0, 4)}</span>
